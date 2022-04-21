@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom'
+
 function Header() {
   return (
     <header>
       <div class="container pb-3">
         <div class="row pt-3">
           <div class="col-9">
-            <img src={"/img/eccommerce_logo.png"} alt="" style={{"max-width": "100px"}} />
+            <Link to="/"><img src={"/img/eccommerce_logo.png"} alt="" style={{"max-width": "100px"}} /></Link>
+            <Link to="/product">Product</Link>
           </div>
           <div class="col-1">
             <button href="" type="button" class="btn btn-warning position-relative">
