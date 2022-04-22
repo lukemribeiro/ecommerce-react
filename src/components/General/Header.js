@@ -7,16 +7,16 @@ function Header() {
         <div class="row pt-3">
           <div class="col-9">
             <Link to="/"><img src={"/img/eccommerce_logo.png"} alt="" style={{"max-width": "100px"}} /></Link>
-            <Link to="/product">Product</Link>
+            <Link to="/productDetails">Product</Link>
           </div>
           <div class="col-1">
-            <button href="" type="button" class="btn btn-warning position-relative">
+            <Link to="/cart" class="btn btn-warning position-relative">
               Cart
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 4
                 <span class="visually-hidden">cart items</span>
               </span>
-            </button>
+            </Link>
           </div>
           <div class="col-1">
             <button class="btn btn-primary">Log In</button>
@@ -32,8 +32,8 @@ function Header() {
             <input type="text" placeholder="Search for anything" class="form-control" />
           </div>
           <div class="col-1 pb-3 pl-0">
-            <input type="submit" class="btn btn-success form-control" value="Search" />
-          </div>
+            <Link to="/productList" class="btn btn-success form-control">Search</Link>
+          </div>  
         </div>
       </form>
     </header>

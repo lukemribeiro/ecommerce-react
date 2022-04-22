@@ -7,9 +7,24 @@ export default function HomePage() {
     {
       "title": "Recommended for You:",
       "products": [
-        {name: "Super Nintendo Entertainment System", price: "1499.99$", rating: "⭐️⭐️⭐️⭐️⭐️", img: "/img/SuperNintendo.png"},
-        {name: "EarthBound for SNES", price: "999.99$", rating: "⭐️⭐️⭐️⭐️⭐️", img: "/img/EarthBound.png"},
-        {name: "Zelda: A Link to The Past for SNES", price: "59.99$", rating: "⭐️⭐️⭐️⭐️⭐️", img: "/img/Zelda.png"}
+        {
+          name: "Super Nintendo Entertainment System",
+          price: "1499.99$",
+          rating: "⭐️⭐️⭐️⭐️⭐️",
+          img: "/img/SuperNintendo.png"
+        },
+        {
+          name: "EarthBound for SNES",
+          price: "999.99$",
+          rating: "⭐️⭐️⭐️⭐️⭐️",
+          img: "/img/EarthBound.png"
+        },
+        {
+          name: "Zelda: A Link to The Past for SNES",
+          price: "59.99$",
+          rating: "⭐️⭐️⭐️⭐️⭐️",
+          img: "/img/Zelda.png"
+        }
       ]
     }
   ];
@@ -18,17 +33,46 @@ export default function HomePage() {
     {
       "title": "Kids' Toys:",
       "products": [
-        {name: "Lego Minecraft: The Creeper Ambush", price: "4.99$", rating: "⭐️⭐️⭐️⭐️", img: "/img/lego1.png"},
-        {name: "Plastic Yo-Yo", price: "999.99$", rating: "⭐️⭐️⭐️", img: "/img/Yo-Yo.png"},
-        {name: "Lego Minecraft: The Abandoned Mine", price: "19.99$", rating: "⭐️⭐️⭐️⭐️⭐️", img: "/img/lego2.png"}
+        {
+          name: "Lego Minecraft: The Creeper Ambush",
+          price: "4.99$", rating: "⭐️⭐️⭐️⭐️",
+          img: "/img/lego1.png"
+        },
+        {
+          name: "Plastic Yo-Yo",
+          price: "999.99$",
+          rating: "⭐️⭐️⭐️",
+          img: "/img/Yo-Yo.png"
+        },
+        {
+          name: "Lego Minecraft: The Abandoned Mine",
+          price: "19.99$",
+          rating: "⭐️⭐️⭐️⭐️⭐️",
+          img: "/img/lego2.png"
+        }
       ]
     },
     {
       "title": "Video Games:",
       "products": [
-        {name: "EarthBound HD for Nintendo Switch", price: "99999.99$", rating: "⭐️⭐️⭐️⭐️⭐️", img: "/img/Eartboundhd.png"},
-        {name: "Super Mario Maker 2 for Nintendo Switch", price: "59.99$", rating: "⭐️⭐️⭐️⭐️⭐️", img: "/img/mario.png"},
-        {name: "Nintendo Switch", price: "299.99$", rating: "⭐️⭐️⭐️⭐️⭐️", img: "/img/switch.png"}
+        {
+          name: "EarthBound HD for Nintendo Switch",
+          price: "99999.99$",
+          rating: "⭐️⭐️⭐️⭐️⭐️",
+          img: "/img/Earthboundhd.png"
+        },
+        {
+          name: "Super Mario Maker 2 for Nintendo Switch",
+          price: "59.99$",
+          rating: "⭐️⭐️⭐️⭐️⭐️",
+          img: "/img/mario.png"
+        },
+        {
+          name: "Nintendo Switch",
+          price: "299.99$",
+          rating: "⭐️⭐️⭐️⭐️⭐️",
+          img: "/img/switch.png"
+        }
       ]
     }
   ];
@@ -48,7 +92,7 @@ export default function HomePage() {
   const productListTop = product_list_data_top.map((list_data) => {
     return(
       <div>
-        <ProductList title={list_data.title} products={list_data.products} />
+        <ProductList title={list_data.title} products={list_data.products} colSize={4} />
         <Line />
       </div>
     );
@@ -57,7 +101,7 @@ export default function HomePage() {
   const productListBottom = product_list_data_bottom.map((list_data) => {
     return(
       <div>
-        <ProductList title={list_data.title} products={list_data.products} />
+        <ProductList title={list_data.title} products={list_data.products} colSize={4} />
         <Line />
       </div>
     );
@@ -66,7 +110,7 @@ export default function HomePage() {
   const sellerList = seller_list_data.map((list_data) => {
     return(
       <div>
-        <SellerList title={list_data.title} sellers={list_data.sellers} />
+        <SellerList title={list_data.title} sellers={list_data.sellers} colSize={4} />
         <Line />
       </div>
     );
@@ -74,7 +118,6 @@ export default function HomePage() {
 
   return (
     <>
-      <Line />
       { productListTop }
       { sellerList }
       { productListBottom }    

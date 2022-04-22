@@ -1,9 +1,9 @@
 import Product from "../SingleItems/Product";
 
-function ProductList({ title, products }) {
+function ProductList({ title, products, colSize }) {
   const productList = products.map((product) => {
     return(
-      <Product img={product.img} name={product.name} price={product.price} rating={product.rating} />
+      <Product img={product.img} name={product.name} price={product.price} rating={product.rating} colSize={colSize} />
     );
   })
 
