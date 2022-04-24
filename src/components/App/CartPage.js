@@ -1,7 +1,8 @@
 import './css/cart.css'
 import CartItem from '../SingleItems/CartItem';
+import { Link } from 'react-router-dom';
 
-function Cart() {
+function CartPage() {
   const cart_data = [
     {
       "name": "EarthBound HD for Nintendo Switch",
@@ -75,7 +76,7 @@ function Cart() {
                   </label>
                 </div>
                 <br />
-                <a href="" class="btn btn-danger">Go To Checkout</a>
+                <Link to="/addressForm" class="btn btn-danger">Go To Checkout</Link>
               </div>
             </div>
           </div>
@@ -87,4 +88,4 @@ function Cart() {
   );
 };
 
-export default Cart;
+export default CartPage;

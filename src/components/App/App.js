@@ -6,6 +6,8 @@ import Line from '../General/Line';
 import Footer from '../General/Footer';
 import ProductListPage from './ProductListPage';
 import CartPage from './CartPage';
+import AddressFormPage from './AddressFormPage';
+import CheckoutPage from './CheckoutPage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route exact path="/productDetails" element={ <ProductDetailsPage /> }/>
           <Route exact path="/productList" element={ <ProductListPage /> }/>
           <Route exact path="/cart" element={ <CartPage /> }/>
+          <Route exact path="/addressForm" element={ <AddressFormPage /> }/>
+          <Route exact path="/checkout" element={ <CheckoutPage /> }/>
         </Routes>
         <Footer />
       </div>
