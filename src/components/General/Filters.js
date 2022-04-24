@@ -1,29 +1,29 @@
 function Filters() {
   return (
-    <div class="pt-3">
+    <div className="pt-3">
       <h4>Filters:</h4>
-      <h5 class="pt-3">Price:</h5>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-        <label class="form-check-label" for="flexCheckDefault">
+      <h5 className="pt-3">Price:</h5>
+      <div className="form-check">
+        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+        <label className="form-check-label" htmlFor="flexCheckDefault">
           Less than 10$
         </label>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-        <label class="form-check-label" for="flexCheckDefault">
+      <div className="form-check">
+        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+        <label className="form-check-label" htmlFor="flexCheckDefault">
           Less than 50$
         </label>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-        <label class="form-check-label" for="flexCheckDefault">
+      <div className="form-check">
+        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+        <label className="form-check-label" htmlFor="flexCheckDefault">
           Less than 100$
         </label>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-        <label class="form-check-label" for="flexCheckDefault">
+      <div className="form-check">
+        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+        <label className="form-check-label" htmlFor="flexCheckDefault">
           More than 100$
         </label>
       </div>

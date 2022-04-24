@@ -1,6 +1,6 @@
 function Line() {
   return (
-    <div style={{"background-color": "darkgoldenrod"}}>
+    <div style={{"backgroundColor": "darkgoldenrod"}}>
       <br></br>
     </div>
   );

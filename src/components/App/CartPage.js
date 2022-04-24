@@ -34,49 +34,49 @@ function CartPage() {
     },
   ]
 
-  const cartItems = cart_data.map(({ name, price, qty, ttl_price, img }) => {
+  const cartItems = cart_data.map(({ name, price, qty, ttl_price, img }, index) => {
     return (
-      <CartItem name={name} price={price} qty={qty} ttl_price={ttl_price} img={img} />
+      <CartItem name={name} price={price} qty={qty} ttl_price={ttl_price} img={img} key={index} />
     );
   })
 
   return (
-    <div class="container pt-3">
-      <div class="row">
-        <div class="col-8">
-          <div class="row">
-            <div class="col-3">
-              <h4 class="pb-3"><strong>PRODUCT</strong></h4>
+    <div className="container pt-3">
+      <div className="row">
+        <div className="col-8">
+          <div className="row">
+            <div className="col-3">
+              <h4 className="pb-3"><strong>PRODUCT</strong></h4>
             </div>
-            <div class="col-3">
-              <h4 class="pb-3"><strong>PRICE</strong></h4>
+            <div className="col-3">
+              <h4 className="pb-3"><strong>PRICE</strong></h4>
             </div>
-            <div class="col-3">
-              <h4 class="pb-3"><strong>QTY</strong></h4>
+            <div className="col-3">
+              <h4 className="pb-3"><strong>QTY</strong></h4>
             </div>
-            <div class="col-3">
-              <h4 class="pb-3"><strong>TOTAL</strong></h4>
+            <div className="col-3">
+              <h4 className="pb-3"><strong>TOTAL</strong></h4>
             </div>
           </div>
           { cartItems }
         </div>
-        <div class="col-4 bg-checkout">
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="col-9">
+        <div className="col-4 bg-checkout">
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col-9">
               <br />
-              <div class="pl-5">
+              <div className="pl-5">
                 <h4>Cart Total - <strong>102166.83$</strong></h4>
                 <p>Shopping & Taxes calculated at Checkout</p>
                 <br />
-                <div class="form-check pl-5">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    I agree to <a class="terms-and-consent">Terms & Consent</a>
+                <div className="form-check pl-5">
+                  <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label className="form-check-label" htmlFor="flexCheckDefault">
+                    I agree to <a className="terms-and-consent">Terms & Consent</a>
                   </label>
                 </div>
                 <br />
-                <Link to="/addressForm" class="btn btn-danger">Go To Checkout</Link>
+                <Link to="/addressForm" className="btn btn-danger">Go To Checkout</Link>
               </div>
             </div>
           </div>

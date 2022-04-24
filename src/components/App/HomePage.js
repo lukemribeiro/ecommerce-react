@@ -89,28 +89,28 @@ export default function HomePage() {
     }
   ];
 
-  const productListTop = product_list_data_top.map((list_data) => {
+  const productListTop = product_list_data_top.map((list_data, index) => {
     return(
       <div>
-        <ProductList title={list_data.title} products={list_data.products} colSize={4} />
+        <ProductList title={list_data.title} products={list_data.products} colSize={4} key={index} />
         <Line />
       </div>
     );
   })
 
-  const productListBottom = product_list_data_bottom.map((list_data) => {
+  const productListBottom = product_list_data_bottom.map((list_data, index) => {
     return(
       <div>
-        <ProductList title={list_data.title} products={list_data.products} colSize={4} />
+        <ProductList title={list_data.title} products={list_data.products} colSize={4} key={index} />
         <Line />
       </div>
     );
   })
   
-  const sellerList = seller_list_data.map((list_data) => {
+  const sellerList = seller_list_data.map((list_data, index) => {
     return(
       <div>
-        <SellerList title={list_data.title} sellers={list_data.sellers} colSize={4} />
+        <SellerList title={list_data.title} sellers={list_data.sellers} colSize={4} key={index}/>
         <Line />
       </div>
     );
