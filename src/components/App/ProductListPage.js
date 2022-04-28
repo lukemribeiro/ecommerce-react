@@ -35,7 +35,7 @@ function ProductListPage() {
 
   const [productList, setProductList] = useState([]);
   const [searchParams, _setSearchParams] = useSearchParams();  
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
     api_client.get(`/products?searchTerm=${searchParams.get('searchTerm')}`).then(res => {

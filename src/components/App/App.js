@@ -17,7 +17,7 @@ function App() {
         <Line />
         <Routes>
           <Route exact path="/" element={ <HomePage /> }/>
-          <Route exact path="/productDetails" element={ <ProductDetailsPage /> }/>
+          <Route exact path="/products/:id" element={ <ProductDetailsPage /> }/>
           <Route exact path="/productList" element={ <ProductListPage /> }/>
           <Route exact path="/cart" element={ <CartPage /> }/>
           <Route exact path="/addressForm" element={ <AddressFormPage /> }/>

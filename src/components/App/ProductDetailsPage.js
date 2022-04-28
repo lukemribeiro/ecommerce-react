@@ -1,32 +1,37 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import api_client from '../../config/api-client';
+
 export default function ProductPage() {
-  const product_data = {
-    "name": "EarthBound HD for Nintendo Switch",
-    "price": ["99999.99$", "999.99$"],
-    "rating": "⭐️⭐️⭐️⭐️⭐️",
-    "brand": "Nintendo",
-    "age": "Everyody",
-    "year": 2022,
-    "genre": "Sci-Fi Fantasy",
-    "img": "/img/Earthboundhd.png",
-  }
+  const [productData, setProductData] = useState({});
+  const { id } = useParams();
+
+  useEffect(() => {
+    console.log('id', id)
+    api_client.get(`/products/${id}`).then(res => {
+      setProductData(res.data[0]);
+    })
+  }, [id])
   
   return (
     <div className="container pt-3 pb-3 pl-5">
 
       <div className="row pt-3">
         <div className="col-5">
-          <img src={product_data.img} className="rounded" style={{"height": "850px"}} alt="" />
+          <img src={productData.image_url} className="rounded" style={{"maxHeight": "850px", "maxWidth": "525px"}} alt="" />
         </div>
         <div className="col-6 pt-4">
-          <h1>{product_data.name}</h1>
-          <h3>Average Rating: {product_data.rating}</h3>
-          <h4>{product_data.price[0]}</h4>
-          <p>{product_data.price[1]} Shipping & Import Fees Deposit to USA</p>
+          <h1>{productData.name}</h1>
+          <h3>Average Rating: {productData.average_rating}</h3>
+          <h4>{productData.price_in_cents/100}$</h4>
+          {/* This isnt in the actual database */}
+          <p>30$ Shipping & Import Fees Deposit to USA</p>
           <br />
-          <h5><strong>Brand: </strong>{product_data.brand}</h5>
-          <h5><strong>Age Range: </strong>{product_data.age}</h5>
-          <h5><strong>Year: </strong>{product_data.year}</h5>
-          <h5><strong>Genre: </strong>{product_data.genre}</h5>
+          {/* These values arent actually in the database */}
+          <h5><strong>Brand: </strong>Nintendo</h5>
+          <h5><strong>Age Range: </strong>Everyone</h5>
+          <h5><strong>Year: </strong>2010</h5>
+          <h5><strong>Genre: </strong>Fantasy | Video Games</h5>
           <br className="pt-3" />
 
           <div className="row">
