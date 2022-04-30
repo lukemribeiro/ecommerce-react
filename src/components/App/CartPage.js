@@ -1,6 +1,8 @@
 import './css/cart.css'
 import CartItem from '../SingleItems/CartItem';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import api_client from '../../config/api-client';
 
 function CartPage() {
   const cart_data = [
@@ -33,6 +35,29 @@ function CartPage() {
       "img": "/img/Zelda.png"
     },
   ]
+
+  // const [cartId, setCartId] = useState('');
+  // const [cartData, setCartData] = useState({});
+  // const { id } = useParams();
+
+  // useEffect(() => {
+  //   console.log('id', id)
+  //   async function fetchData() {
+  //     await api_client.get(`/carts/${id}`).then(res => {
+  //       console.log(res.data[0].id.toString())
+  //       setCartId(res.data[0].id.toString());
+        
+  //     });
+  //     console.log(cartId);
+  //     await api_client.get(`/cart_items/${cartId}`).then(res => {
+  //       setCartData(res.data[0]);
+  //       console.log(cartData);
+  //     });
+  //   };
+
+  //   fetchData();
+
+  // }, [id])
 
   const cartItems = cart_data.map(({ name, price, qty, ttl_price, img }, index) => {
     return (

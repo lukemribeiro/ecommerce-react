@@ -3,7 +3,7 @@ function CartItem({ name, price, qty, ttl_price, img }) {
     <div className="row">
       <div className="col-3">
         <br />
-        <img className="rounded" src={img} style={{"max-height": "250px", "maxWidth": "200px"}} alt="" />
+        <img className="rounded" src={img} style={{"maxHeight": "250px", "maxWidth": "200px"}} alt="" />
         <h5>{name}</h5>
       </div>
       <div className="col-3">

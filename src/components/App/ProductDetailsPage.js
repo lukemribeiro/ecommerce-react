@@ -4,14 +4,38 @@ import api_client from '../../config/api-client';
 
 export default function ProductPage() {
   const [productData, setProductData] = useState({});
+  const [productQuantity, setProductQuantity] = useState(1);
   const { id } = useParams();
 
+  const onQuantityChange = (e) => {
+    setProductQuantity(e.target.value);
+  };
+
+  
+
   useEffect(() => {
-    console.log('id', id)
-    api_client.get(`/products/${id}`).then(res => {
-      setProductData(res.data[0]);
-    })
-  }, [id])
+    async function fetchData() {
+      await api_client.get(`/products/${id}`).then(res => {
+        setProductData(res.data[0]);
+      })
+    };
+
+    fetchData();
+    
+  }, [id]);
+
+  const submitProductData = () => {
+    var cartItemProperties = {
+      "product_id": productData.id,
+      "quantity": productQuantity
+    };
+
+    if (localStorage.getItem('cartId')) {
+      cartItemProperties["cart_id"] = localStorage.getItem('cartId');
+    }
+
+    api_client.post(`/cart_items`, cartItemProperties)
+  };
   
   return (
     <div className="container pt-3 pb-3 pl-5">
@@ -36,7 +60,11 @@ export default function ProductPage() {
 
           <div className="row">
             <div className="col-2 pt-3">
-              <a className="btn btn-warning">Add to Cart</a>
+              <button className="btn btn-warning" onClick={submitProductData}>Add to Cart</button>
+            </div>
+            <div className="col-2 pt-3">
+              Quantity:
+              <input onChange={onQuantityChange} value={productQuantity} type="number" className='form-control' min={1} defaultValue={1} />
             </div>
             <div className="col-2 pt-3">
               <a className="btn btn-danger">Go to Checkout</a>
