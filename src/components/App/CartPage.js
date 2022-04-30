@@ -2,66 +2,40 @@ import './css/cart.css'
 import CartItem from '../SingleItems/CartItem';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import _ from 'lodash';
 import api_client from '../../config/api-client';
 
 function CartPage() {
-  const cart_data = [
-    {
-      "name": "EarthBound HD for Nintendo Switch",
-      "price": "99999.99$",
-      "qty": "1",
-      "ttl_price": "99999.99$",
-      "img": "/img/Earthboundhd.png"
-    },
-    {
-      "name": "Nintendo Switch",
-      "price": "300$",
-      "qty": "2",
-      "ttl_price": "600$",
-      "img": "/img/switch.png"
-    },
-    {
-      "name": "Super Nintendo",
-      "price": "1499.99$",
-      "qty": "1",
-      "ttl_price": "1499.99$",
-      "img": "/img/SuperNintendo.png"
-    },
-    {
-      "name": "Zelda: A Link to The Past for Super Nintendo",
-      "price": "59.99$",
-      "qty": "1",
-      "ttl_price": "59.99$",
-      "img": "/img/Zelda.png"
-    },
-  ]
 
-  // const [cartId, setCartId] = useState('');
-  // const [cartData, setCartData] = useState({});
-  // const { id } = useParams();
+  const [cartId, setCartId] = useState(localStorage.getItem('cartId'));
+  const [cartData, setCartData] = useState([]);
+  const [productList, setProductList] = useState([]);
 
-  // useEffect(() => {
-  //   console.log('id', id)
-  //   async function fetchData() {
-  //     await api_client.get(`/carts/${id}`).then(res => {
-  //       console.log(res.data[0].id.toString())
-  //       setCartId(res.data[0].id.toString());
-        
-  //     });
-  //     console.log(cartId);
-  //     await api_client.get(`/cart_items/${cartId}`).then(res => {
-  //       setCartData(res.data[0]);
-  //       console.log(cartData);
-  //     });
-  //   };
+  useEffect(() => {
+    api_client.get(`/cartItems`, { cartId }).then(res => {
+      setCartData(res.data);
+    });
+  }, []);
 
-  //   fetchData();
+  useEffect(() => {
+    let products = []
+    cartData.map(({ product_id }, index) => {
+      api_client.get(`/products/${product_id}`).then(res => {
+        products = [...products, res.data]
+        setProductList(products);
+      });
+    });
+  }, [cartData]);
 
-  // }, [id])
+  const cartItems = productList.map(({ id, name, price_in_cents, image_url }, index) => {
+    const quantity = _.filter(cartData, (cartItemData) => cartItemData.product_id == id)[0].quantity;
 
-  const cartItems = cart_data.map(({ name, price, qty, ttl_price, img }, index) => {
+    // const price = price_in_cents/100;
+    // const exactPrice = parseFloat(price);
+    // const floatQuantity = parseFloat(quantity);
+    const total_price = quantity * price_in_cents / 100;
     return (
-      <CartItem name={name} price={price} qty={qty} ttl_price={ttl_price} img={img} key={index} />
+      <CartItem name={name} price={`${price_in_cents/100}`} qty={quantity} ttl_price={total_price} img={image_url} key={index} />
     );
   })
 

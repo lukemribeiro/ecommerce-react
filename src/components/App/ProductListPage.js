@@ -45,7 +45,7 @@ function ProductListPage() {
 
   const searchResults = productList.map(({ image_url, name, price_in_cents, average_rating }, index) => {
     return (
-      <Product img={image_url} name={name} price={`${price_in_cents/100}$`} rating={average_rating} colSize={6} key={index} />
+      <Product img={image_url} name={name} price={`${price_in_cents/100}`} rating={average_rating} colSize={6} key={index} />
     );
   });
 
