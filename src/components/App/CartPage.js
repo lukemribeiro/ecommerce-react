@@ -11,10 +11,14 @@ function CartPage() {
   const [cartData, setCartData] = useState([]);
   const [productList, setProductList] = useState([]);
 
-  useEffect(() => {
+  const fetchCartItems = () => {
     api_client.get(`/cartItems`, { cartId }).then(res => {
       setCartData(res.data);
     });
+  };
+
+  useEffect(() => {
+    fetchCartItems();
   }, []);
 
   useEffect(() => {
@@ -27,16 +31,14 @@ function CartPage() {
     });
   }, [cartData]);
 
-  const cartItems = productList.map(({ id, name, price_in_cents, image_url }, index) => {
-    const quantity = _.filter(cartData, (cartItemData) => cartItemData.product_id == id)[0].quantity;
+  const cartItems = cartData.map((cart_item, index) => {
+    const selectedProduct = _.filter(productList, (product) => product.id == cart_item.product_id)[0];
 
-    // const price = price_in_cents/100;
-    // const exactPrice = parseFloat(price);
-    // const floatQuantity = parseFloat(quantity);
-    const total_price = quantity * price_in_cents / 100;
-    return (
-      <CartItem name={name} price={`${price_in_cents/100}`} qty={quantity} ttl_price={total_price} img={image_url} key={index} />
-    );
+    if(selectedProduct != undefined) {
+      return (<CartItem cart_item={cart_item} product={selectedProduct} loadCallback={fetchCartItems} key={index} />)
+    } else {
+      return (<></>)
+    }
   })
 
   return (
@@ -51,7 +53,7 @@ function CartPage() {
               <h4 className="pb-3"><strong>PRICE</strong></h4>
             </div>
             <div className="col-3">
-              <h4 className="pb-3"><strong>QTY</strong></h4>
+              <h4 className="pb-3"><strong>QUANTITY</strong></h4>
             </div>
             <div className="col-3">
               <h4 className="pb-3"><strong>TOTAL</strong></h4>
