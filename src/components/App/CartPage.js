@@ -9,7 +9,6 @@ function CartPage() {
 
   const [cartId, setCartId] = useState(localStorage.getItem('cartId'));
   const [cartData, setCartData] = useState([]);
-  const [productList, setProductList] = useState([]);
 
   const fetchCartItems = () => {
     api_client.get(`/cartItems`, { cartId }).then(res => {
@@ -21,21 +20,10 @@ function CartPage() {
     fetchCartItems();
   }, []);
 
-  useEffect(() => {
-    let products = []
-    cartData.map(({ product_id }, index) => {
-      api_client.get(`/products/${product_id}`).then(res => {
-        products = [...products, res.data]
-        setProductList(products);
-      });
-    });
-  }, [cartData]);
-
   const cartItems = cartData.map((cart_item, index) => {
-    const selectedProduct = _.filter(productList, (product) => product.id == cart_item.product_id)[0];
 
-    if(selectedProduct != undefined) {
-      return (<CartItem cart_item={cart_item} product={selectedProduct} loadCallback={fetchCartItems} key={index} />)
+    if(cartData) {
+      return (<CartItem cart_item={cart_item} loadCallback={fetchCartItems} key={index} />)
     } else {
       return (<></>)
     }

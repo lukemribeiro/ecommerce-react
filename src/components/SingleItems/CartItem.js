@@ -1,7 +1,7 @@
 import api_client from '../../config/api-client';
 import { useState } from 'react';
 
-function CartItem({cart_item, product, loadCallback}) {
+function CartItem({cart_item, loadCallback}) {
   const [productQuantity, setProductQuantity] = useState(cart_item.quantity);
 
   const onClickDelete = () => {
@@ -13,6 +13,7 @@ function CartItem({cart_item, product, loadCallback}) {
   const onQuantityChange = (e) => {
     let quantity = e.target.value
     setProductQuantity(quantity);
+    console.log('IM IN THE CHANGE FUNCTION');
 
     api_client.put(`/cartItems/${cart_item.id}`, {
       "product_id": cart_item.product_id,
@@ -23,15 +24,15 @@ function CartItem({cart_item, product, loadCallback}) {
     });
   };
 
-  const price = product.price_in_cents / 100;
+  const price = cart_item.price_in_cents / 100;
   const ttl_price = price * cart_item.quantity;
 
   return (
     <div className="row">
       <div className="col-3">
         <br />
-        <img className="rounded" src={product.image_url} style={{"maxHeight": "250px", "maxWidth": "200px"}} alt="" />
-        <h5>{product.name}</h5>
+        <img className="rounded" src={cart_item.image_url} style={{"maxHeight": "250px", "maxWidth": "200px"}} alt="" />
+        <h5>{cart_item.name}</h5>
         
       </div>
       <div className="col-3">
