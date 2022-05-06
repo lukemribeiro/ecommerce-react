@@ -1,5 +1,7 @@
 import api_client from '../../config/api-client';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../../css/CartItem.css'
 
 function CartItem({cart_item, loadCallback}) {
   const [productQuantity, setProductQuantity] = useState(cart_item.quantity);
@@ -13,8 +15,6 @@ function CartItem({cart_item, loadCallback}) {
   const onQuantityChange = (e) => {
     let quantity = e.target.value
     setProductQuantity(quantity);
-    console.log('IM IN THE CHANGE FUNCTION');
-
     api_client.put(`/cartItems/${cart_item.id}`, {
       "product_id": cart_item.product_id,
       "cart_id": cart_item.cart_id,
@@ -29,16 +29,16 @@ function CartItem({cart_item, loadCallback}) {
 
   return (
     <div className="row">
-      <div className="col-3">
+      <Link to={`/products/${cart_item.product_id}`} className="col-3 linkText">
         <br />
-        <img className="rounded" src={cart_item.image_url} style={{"maxHeight": "250px", "maxWidth": "200px"}} alt="" />
+        <img className="rounded productImage" src={cart_item.image_url} alt="" />
         <h5>{cart_item.name}</h5>
         
-      </div>
+      </Link>
       <div className="col-3">
         <h5 className="pt-5">${price}</h5>
         <button className="btn" onClick={onClickDelete}>
-          <img src="/img/trash-can.png" style={{"maxHeight": "50px", "maxWidth": "200px"}} />
+          <img className="trashLogo" src="/img/trash-can.png" />
         </button>
       </div>
       <div className="col-2 pt-5">

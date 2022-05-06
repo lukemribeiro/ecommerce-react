@@ -1,0 +1,8 @@
+.imageSize{
+  max-width: 400px;
+  max-height: 400px;
+}
+.linkText{
+  text-decoration: none;
+  color: black;
+}

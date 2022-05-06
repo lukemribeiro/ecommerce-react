@@ -1,0 +1,11 @@
+.trashLogo{
+  height: 50px;
+}
+.productImage{
+  max-width: 200px;
+  max-height: 250px;
+}
+.linkText{
+  text-decoration: none;
+  color: black;
+}

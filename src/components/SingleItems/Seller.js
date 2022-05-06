@@ -1,4 +1,4 @@
-import './Seller.css'
+import '../../css/Seller.css'
 
 function Seller({ img, name }) {
   return (

@@ -22,7 +22,6 @@ function Header() {
         <div className="row pt-3">
           <div className="col-9">
             <Link to="/"><img src={"/img/eccommerce_logo.png"} alt="" style={{"maxWidth": "100px"}} /></Link>
-            <Link to="/productDetails">Product</Link>
           </div>
           <div className="col-1">
             <Link to="/cart" className="btn btn-warning position-relative">
