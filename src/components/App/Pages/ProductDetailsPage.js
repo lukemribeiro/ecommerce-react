@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import api_client from '../../config/api-client';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import api_client from '../../../config/api-client';
 
 export default function ProductPage() {
   const [productData, setProductData] = useState({});
@@ -74,7 +74,7 @@ export default function ProductPage() {
               <input onChange={onQuantityChange} value={productQuantity} type="number" className='form-control' min={1} />
             </div>
             <div className="col-2 pt-3">
-              <a className="btn btn-danger">Go to Checkout</a>
+              <Link to="/addressForm" className="btn btn-danger">Go to Checkout</Link>
             </div>
           </div>
         </div>

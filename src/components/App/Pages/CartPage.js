@@ -1,9 +1,9 @@
-import './css/cart.css'
-import CartItem from '../SingleItems/CartItem';
+import '../../css/cart.css'
+import CartItem from '../../SingleItems/CartItem';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import _ from 'lodash';
-import api_client from '../../config/api-client';
+import api_client from '../../../config/api-client';
 
 function CartPage() {
 

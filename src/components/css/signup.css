@@ -1,0 +1,10 @@
+.loginLink {
+  text-decoration: none;
+  color: #23bda3
+}
+.error {
+  color: pink;
+  background-color: rgb(128, 37, 37);
+  border-color: rgb(168, 1, 1);
+  border-radius: 20px;
+}

@@ -1,7 +1,7 @@
 import { useSearchParams, useLocation } from "react-router-dom";
-import Filters from "../General/Filters";
-import Product from "../SingleItems/Product";
-import api_client from "../../config/api-client";
+import Filters from "../../General/Filters";
+import Product from "../../SingleItems/Product";
+import api_client from "../../../config/api-client";
 import { useEffect, useState } from "react";
 
 function ProductListPage() {

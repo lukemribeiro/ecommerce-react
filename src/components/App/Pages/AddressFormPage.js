@@ -1,6 +1,17 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import api_client from '../../../config/api-client';
 
 function AddressFormPage() {
+  const naviagte = useNavigate();
+
+  useEffect(() => {
+    console.log(localStorage.getItem('token'))
+    if (!localStorage.getItem('token')) {
+      naviagte('/signup');
+    }
+  }, []);
+
   return (
     <>
       <div className="container pt-3">

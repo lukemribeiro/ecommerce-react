@@ -1,7 +1,7 @@
-import Line from '../General/Line';
-import ProductList from '../Lists/ProductList';
-import SellerList from '../Lists/SellerList';
-import api_client from '../../config/api-client';
+import Line from '../../General/Line';
+import ProductList from '../../Lists/ProductList';
+import SellerList from '../../Lists/SellerList';
+import api_client from '../../../config/api-client';
 import { useEffect, useState } from 'react';
 
 export default function HomePage() {

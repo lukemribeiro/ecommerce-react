@@ -11,10 +11,40 @@ function Header() {
     setSearchTerm(e.target.value);
   };
 
+  const onSignOutClick = (e) => {
+    localStorage.removeItem('token');
+    navigate('/');
+  };
+
   const performSearch = (e) => {
     setSearchParams({ searchTerm });
     navigate(`/productList?searchTerm=${searchTerm}`)
   }
+
+  function renderButtons() {
+    if (localStorage.getItem('token')) {
+      console.log('HAS TOKEN');
+      return (
+        <>
+          <div className="col-2">
+              <button onClick={onSignOutClick} className="btn btn-dark">Sign Out</button>
+          </div>
+        </>
+      );
+    } else {
+      console.log('NO TKOEN HER');
+      return (
+        <>
+          <div className="col-1">
+              <Link to="/signin" className="btn btn-primary">Sign In</Link>
+          </div>
+          <div className="col-1">
+              <Link to="/signup" className="btn btn-info">Sign Up</Link>
+          </div>
+        </>
+      );
+    }
+  };
 
   return (
     <header>
@@ -32,18 +62,13 @@ function Header() {
               </span>
             </Link>
           </div>
-          <div className="col-1">
-            <button className="btn btn-primary">Log In</button>
-          </div>
-          <div className="col-1">
-            <button className="btn btn-info">Sign Up</button>
-          </div>
+          { renderButtons() }
         </div>
       </div>
       <div action="" className="container">
         <div className="row">
           <div className="col-6">
-            <input type="text" placeholder="Search for anything" className="form-control" value={searchTerm} onChange={onSearchTermChange} />
+            <input type="text" placeholder="Search for anything" className="textField form-control" value={searchTerm} onChange={onSearchTermChange} />
           </div>
           <div className="col-1 pb-3 pl-0">
             <button onClick={performSearch} className="btn btn-success form-control">Search</button>
