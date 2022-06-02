@@ -34,6 +34,7 @@ export default function ProductPage() {
     if (localStorage.getItem('cartId')) {
       cartItemProperties["cart_id"] = localStorage.getItem('cartId');
     }
+    console.log(cartItemProperties);
 
     api_client.post(`/cartItems`, cartItemProperties).then(res => {
       if (!localStorage.getItem('cartId')) {

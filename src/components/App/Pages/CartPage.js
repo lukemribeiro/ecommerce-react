@@ -1,6 +1,6 @@
 import '../../css/cart.css'
 import CartItem from '../../SingleItems/CartItem';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import _ from 'lodash';
 import api_client from '../../../config/api-client';
@@ -11,7 +11,8 @@ function CartPage() {
   const [cartData, setCartData] = useState([]);
 
   const fetchCartItems = () => {
-    api_client.get(`/cartItems`, { cartId }).then(res => {
+    api_client.get(`/cartItems?cart_id=${cartId}`).then(res => {
+      console.log(cartId);
       setCartData(res.data);
     });
   };
@@ -58,12 +59,6 @@ function CartPage() {
                 <h4>Cart Total - <strong>102166.83$</strong></h4>
                 <p>Shopping & Taxes calculated at Checkout</p>
                 <br />
-                <div className="form-check pl-5">
-                  <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    I agree to <a className="terms-and-consent">Terms & Consent</a>
-                  </label>
-                </div>
                 <br />
                 <Link to="/addressForm" className="btn btn-danger">Go To Checkout</Link>
               </div>
