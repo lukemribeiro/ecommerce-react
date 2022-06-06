@@ -9,10 +9,10 @@ function CartPage() {
 
   const [cartId, setCartId] = useState(localStorage.getItem('cartId'));
   const [cartData, setCartData] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const fetchCartItems = () => {
     api_client.get(`/cartItems?cart_id=${cartId}`).then(res => {
-      console.log(cartId);
       setCartData(res.data);
     });
   };
@@ -21,10 +21,18 @@ function CartPage() {
     fetchCartItems();
   }, []);
 
+  useEffect(() => {
+    cartData.map((cart_item) => {
+      let price = cart_item.price_in_cents/100;
+      let singleTotalPrice = price * cart_item.quantity;
+      setTotalPrice(totalPrice + singleTotalPrice);
+    })
+  }, [cartData]);
+
   const cartItems = cartData.map((cart_item, index) => {
 
     if(cartData) {
-      return (<CartItem cart_item={cart_item} loadCallback={fetchCartItems} key={index} />)
+      return (<CartItem totalPrice={totalPrice} cart_item={cart_item} loadCallback={fetchCartItems} key={index} />)
     } else {
       return (<></>)
     }
@@ -56,7 +64,7 @@ function CartPage() {
             <div className="col-9">
               <br />
               <div className="pl-5">
-                <h4>Cart Total - <strong>102166.83$</strong></h4>
+                <h4>Cart Total: <strong>{totalPrice}</strong></h4>
                 <p>Shopping & Taxes calculated at Checkout</p>
                 <br />
                 <br />
